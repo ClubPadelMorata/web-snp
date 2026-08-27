@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SNP Femenino</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- CABECERA -->
+        <header class="header">
+            <div class="logo">
+                <span>🎾</span>
+                <div>
+                    <h1>SNP Femenino</h1>
+                    <p>Series Nacionales de Pádel</p>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- NAVEGACIÓN -->
+        <nav class="nav">
+
+            <button class="nav-btn active" data-section="inicio">
+                🏠
+                <span>Inicio</span>
+            </button>
+
+            <button class="nav-btn" data-section="jugadoras">
+                👩
+                <span>Jugadoras</span>
+            </button>
+
+            <button class="nav-btn" data-section="jornadas">
+                📅
+                <span>Jornadas</span>
+            </button>
+
+            <button class="nav-btn" data-section="estadisticas">
+                📊
+                <span>Estadísticas</span>
+            </button>
+
+        </nav>
+
+
+        <!-- CONTENIDO -->
+        <main class="content">
+
+            <!-- INICIO -->
+            <section id="inicio" class="section active-section">
+
+                <h2>Próxima jornada</h2>
+
+                <div class="match-card">
+
+                    <div class="match-info">
+
+                        <span class="tag home">🏠 EN CASA</span>
+
+                        <h3>SNP Femenino</h3>
+
+                        <div class="vs">VS</div>
+
+                        <h3>Equipo rival</h3>
+
+                        <p class="date">
+                            📅 Próximamente
+                        </p>
+
+                    </div>
+
+                    <button class="primary-btn">
+                        Gestionar jornada
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- JUGADORAS -->
+            <section id="jugadoras" class="section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Jugadoras</h2>
+                        <p>Equipo SNP Femenino</p>
+                    </div>
+
+                    <button id="add-player-btn" class="primary-btn">
+                        + Añadir jugadora
+                    </button>
+                    
+                </div>
+
+                <div id="players-list" class="players-list">
+                    <!-- Las jugadoras aparecerán aquí -->
+                </div>
+
+            </section>
+
+
+            <!-- JORNADAS -->
+            <section id="jornadas" class="section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Jornadas</h2>
+                        <p>Calendario de la temporada</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        + Nueva jornada
+                    </button>
+                </div>
+
+                <div id="matches-list">
+
+                    <div class="empty-state">
+                        <span>📅</span>
+                        <p>Todavía no hay jornadas creadas</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ESTADÍSTICAS -->
+            <section id="estadisticas" class="section">
+
+                <h2>Estadísticas</h2>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>👩</span>
+                        <p>Jugadoras</p>
+                        <strong id="total-players">0</strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>📋</span>
+                        <p>Convocatorias</p>
+                        <strong>0</strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>🎾</span>
+                        <p>Partidos jugados</p>
+                        <strong>0</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- MODAL JUGADORA -->
+<div id="player-modal" class="modal">
+
+    <div class="modal-content">
+
+        <button id="close-modal" class="close-btn">×</button>
+
+        <h2 id="modal-title">Nueva jugadora</h2>
+
+        <form id="player-form">
+
+            <label for="player-name">Nombre</label>
+            <input
+                type="text"
+                id="player-name"
+                placeholder="Nombre de la jugadora"
+                required
+            >
+
+            <label for="player-points">Puntuación</label>
+            <input
+                type="number"
+                id="player-points"
+                step="0.01"
+                placeholder="Ej. 8.15"
+                required
+            >
+
+            <label for="player-position">Posición</label>
+
+            <select id="player-position" required>
+                <option value="">Selecciona posición</option>
+                <option value="Derecha">Derecha</option>
+                <option value="Revés">Revés</option>
+                <option value="Ambas">Ambas</option>
+            </select>
+
+            <button type="submit" class="primary-btn modal-save">
+                Guardar jugadora
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
