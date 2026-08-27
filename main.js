@@ -117,39 +117,6 @@ async function deletePlayerFromDatabase(playerId) {
 
 }
 
-async function editPlayerInDatabase(playerId, player) {
-
-    try {
-
-        const response = await fetch(API_URL, {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "text/plain;charset=utf-8"
-            },
-
-            body: JSON.stringify({
-                action: "edit",
-                id: playerId,
-                player: player
-            })
-
-        });
-
-        const result = await response.json();
-
-        return result;
-
-    } catch (error) {
-
-        console.error("Error editando jugadora:", error);
-
-        throw error;
-
-    }
-
-}
 //EDITAR JUGADORA EN LA BASE DE DATOS
 async function editPlayerInDatabase(playerId, player) {
 
@@ -201,6 +168,52 @@ function calculateParticipationPoints(player) {
 
 }
 
+// ACTUALIZAR PUNTUACIONES DESDE SNP
+async function updatePointsFromSNP() {
+
+    try {
+
+        const response = await fetch(API_URL, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+
+            body: JSON.stringify({
+                action: "updatePoints"
+            })
+
+        });
+
+        const result = await response.json();
+
+        return result;
+
+    } catch (error) {
+
+        console.error(
+            "Error actualizando puntuaciones:",
+            error
+        );
+
+        throw error;
+
+    }
+
+}
+
+// FORMATEAR PUNTOS A 2 DECIMALES
+
+function formatPoints(points) {
+
+    return new Intl.NumberFormat("es-ES", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(Number(points) || 0);
+
+}
 // NÚMERO TOTAL DE JUGADORAS
 
 function renderPlayers() {
@@ -244,11 +257,16 @@ function renderPlayers() {
                 <div class="player-info">
                     <h3>${player.name}</h3>
 
-                    <p>
-                        ${player.position} ·
-                        ${player.points.toFixed(2)} SNP
-                    </p>
-                </div>
+                 <p class="player-subtitle">
+                    <span class="position-badge position-${player.position.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}">
+                        ${player.position}
+                    </span>
+
+                    <span class="player-snp-points">
+                        ${formatPoints(player.points)} SNP
+                    </span>
+                </p> 
+            </div>
 
             </div>
 
@@ -332,6 +350,9 @@ const playerModal = document.getElementById("player-modal");
 const addPlayerBtn = document.getElementById("add-player-btn");
 const closeModalBtn = document.getElementById("close-modal");
 
+const updatePointsBtn =
+    document.getElementById("update-points-btn");
+
 const playerForm = document.getElementById("player-form");
 const modalTitle = document.getElementById("modal-title");
 
@@ -348,6 +369,55 @@ addPlayerBtn.addEventListener("click", () => {
     playerModal.classList.add("show");
 });
 
+// ACTUALIZAR PUNTUACIONES SNP
+updatePointsBtn.addEventListener("click", async () => {
+
+    const textoOriginal = updatePointsBtn.textContent;
+
+    try {
+
+        updatePointsBtn.disabled = true;
+
+        updatePointsBtn.textContent =
+            "⏳ Actualizando...";
+
+        const result =
+            await updatePointsFromSNP();
+
+        if (!result.success) {
+
+            alert(
+                "No se han podido actualizar las puntuaciones"
+            );
+
+            return;
+
+        }
+
+        await loadPlayers();
+
+        alert(
+            "✅ Puntuaciones actualizadas correctamente"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Ha ocurrido un error al actualizar las puntuaciones"
+        );
+
+    } finally {
+
+        updatePointsBtn.disabled = false;
+
+        updatePointsBtn.textContent =
+            textoOriginal;
+
+    }
+
+});
 // CERRAR MODAL
 closeModalBtn.addEventListener("click", () => {
     playerModal.classList.remove("show");

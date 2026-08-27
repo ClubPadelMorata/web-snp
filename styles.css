@@ -521,3 +521,87 @@ body {
     }
 
 }
+/* BOTÓN ACTUALIZAR PUNTUACIONES */
+
+.update-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    background: #ffffff;
+    color: #333;
+
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.update-btn:hover {
+    transform: translateY(-2px);
+
+    border-color: #bdbdbd;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.update-btn:active {
+    transform: translateY(0);
+}
+
+.update-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* POSICIONES JUGADORAS */
+
+.player-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0 0;
+}
+
+.position-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* DERECHA - AZUL */
+.position-derecha {
+    background-color: #dceeff;
+    color: #3976a8;
+}
+
+/* REVÉS - VERDE */
+.position-reves {
+    background-color: #ddf5e5;
+    color: #3d8a5a;
+}
+
+/* AMBAS - AMARILLO */
+.position-ambas {
+    background-color: #fff1c9;
+    color: #a67b18;
+}
+
+.player-snp-points {
+    color: #666;
+    font-size: 14px;
+}
