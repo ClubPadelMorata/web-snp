@@ -881,16 +881,28 @@ body {
     color: #3976a8;
 }
 
-/* REVÉS - VERDE */
-.position-reves {
-    background-color: #ddf5e5;
-    color: #3d8a5a;
+/* DERECHA PREFERENTE - AZUL MÁS OSCURO */
+.position-derecha-preferente {
+    background-color: #b9dcf5;
+    color: #28618f;
 }
 
 /* AMBAS - AMARILLO */
 .position-ambas {
     background-color: #fff1c9;
     color: #a67b18;
+}
+
+/* REVÉS - VERDE */
+.position-reves {
+    background-color: #ddf5e5;
+    color: #3d8a5a;
+}
+
+/* REVÉS PREFERENTE - VERDE MÁS OSCURO */
+.position-reves-preferente {
+    background-color: #bde5ca;
+    color: #2f7046;
 }
 
 .player-snp-points {

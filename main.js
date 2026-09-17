@@ -214,6 +214,30 @@ function formatPoints(points) {
     }).format(Number(points) || 0);
 
 }
+
+function getPositionShort(position) {
+    const positions = {
+        "Derecha": "D",
+        "Derecha preferente": "D+",
+        "Ambas": "A",
+        "Revés": "R",
+        "Revés preferente": "R+"
+    };
+
+    return positions[position] || position;
+}
+
+function getPositionClass(position) {
+    const classes = {
+        "Derecha": "derecha",
+        "Derecha preferente": "derecha-preferente",
+        "Ambas": "ambas",
+        "Revés": "reves",
+        "Revés preferente": "reves-preferente"
+    };
+
+    return classes[position] || "";
+}
 // NÚMERO TOTAL DE JUGADORAS
 
 function renderPlayers() {
@@ -253,8 +277,8 @@ function renderPlayers() {
                     <h3>${player.name}</h3>
 
                  <p class="player-subtitle">
-                    <span class="position-badge position-${player.position.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}">
-                        ${player.position}
+                    <span class="position-badge position-${getPositionClass(player.position)}">
+                        ${getPositionShort(player.position)}
                     </span>
 
                     <span class="player-snp-points">
