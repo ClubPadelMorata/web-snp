@@ -244,29 +244,321 @@ body {
 
 
 /* MÓVIL */
+/* ==============================
+   AJUSTE MÓVIL COMPACTO
+   ============================== */
+@media (max-width: 768px) {
 
-@media (max-width: 600px) {
+    /* ==============================
+       GENERAL
+       ============================== */
 
     .app {
+        padding: 8px;
+    }
+
+
+    /* ==============================
+       CABECERA
+       ============================== */
+
+    .header {
         padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 18px;
     }
 
-    .nav {
-        overflow-x: auto;
+    .logo {
+        gap: 8px;
     }
 
-    .nav-btn {
-        min-width: 85px;
+    .logo span {
+        font-size: 27px;
     }
 
-    .nav-btn span {
-        display: block;
-        margin: 4px 0 0;
+    .logo h1 {
+        font-size: 20px;
+    }
+
+    .logo p {
         font-size: 12px;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr;
+
+    /* ==============================
+       MENÚ
+       ============================== */
+
+    .nav {
+        padding: 5px;
+        gap: 2px;
+        margin-bottom: 16px;
+    }
+
+    .nav-btn {
+        padding: 8px 4px;
+        font-size: 12px;
+        border-radius: 10px;
+    }
+
+    .nav-btn span {
+        margin-left: 2px;
+    }
+
+    .nav-btn svg {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    }   
+
+
+    /* ==============================
+       CABECERA DE JUGADORAS
+       ============================== */
+
+    .section h2 {
+        font-size: 21px;
+    }
+
+    .section-header {
+        margin-bottom: 12px;
+    }
+
+    .section-header p {
+        font-size: 13px;
+    }
+
+    .primary-btn {
+        padding: 9px 12px;
+        font-size: 12px;
+        border-radius: 10px;
+    }
+        #add-player-btn {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #add-player-btn svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    #update-points-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    #update-points-btn svg {
+        width: 19px;
+        height: 19px;
+    }
+    
+
+
+    /* ==============================
+       TARJETA DE JUGADORA
+       ============================== */
+
+    .player-card {
+        padding: 10px 10px 5px;
+        border-radius: 16px;
+        column-gap: 4px;
+        row-gap: 0;
+    }
+
+
+    /* ==============================
+       INFORMACIÓN DE JUGADORA
+       ============================== */
+
+    .player-main-info {
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .player-ranking {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        font-size: 12px;
+    }
+
+    .player-info {
+        min-width: 0;
+    }
+
+    .player-info h3 {
+        font-size: 15px;
+        line-height: 18px;
+        margin-bottom: 3px;
+    }
+
+    .player-info p {
+        font-size: 12px;
+    }
+
+
+    /* ==============================
+       POSICIÓN Y PUNTOS SNP
+       ============================== */
+    .position-badge {
+        padding: 2px 8px;
+        font-size: 10px;
+        border-radius: 18px;
+    }
+
+    .player-snp-points {
+        font-size: 10px;
+    }
+        
+
+
+    /* ==============================
+       BOTONES EDITAR / ELIMINAR
+       ============================== */
+
+    .player-buttons {
+        gap: 4px;
+    }
+
+    .icon-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        font-size: 13px;
+    }
+    .icon-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* ==============================
+    ESTADÍSTICAS MÓVILES
+    ICONO + NÚMERO
+    ============================== */
+
+    .player-stats {
+        width: 100%;
+        order: 3;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: -2px;
+        padding-top: 5px;
+        border-top: 1px solid #eee;
+        gap: 4px;
+    }
+
+    /* Cada estadística */
+
+    .mini-stat {
+        width: auto !important;
+        min-width: 0 !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+    }
+
+    /* Círculo del emoticono */
+
+    .mini-stat span {
+        width: 28px;
+        height: 28px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+    .mini-stat .stat-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .participation-points .stat-icon {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+
+    .participation-points .stat-icon svg {
+        width: 16px;
+        height: 16px;
+        
+        
+    }
+
+    /* Colores pastel */
+
+    .mini-stat:nth-child(1) span {
+        background: #eee7ff;
+    }
+
+    .mini-stat:nth-child(2) span {
+        background: #e5f1ff;
+    }
+
+    .mini-stat:nth-child(3) span {
+        background: #fde8f3;
+    }
+
+    /* Número a la derecha */
+
+    .mini-stat strong {
+        font-size: 13px !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+    }
+
+    /* Ocultamos las palabras */
+
+    .mini-stat small {
+        display: none !important;
+    }
+
+    /* ⭐ */
+
+    .participation-points {
+        width: auto;
+        height: 28px;
+        padding: 0 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        border-radius: 14px;
+        background: #fff1b8;
+        color: #000;
+    }
+
+    .participation-points span {
+        font-size: 12px;
+        
+    }
+
+    .participation-points strong {
+        font-size: 13px;
     }
 
 }
@@ -492,7 +784,7 @@ body {
 
     padding: 8px 12px;
 
-    background: #f0ecfa;
+    background: #fff1b8;
     border-radius: 12px;
 }
 
