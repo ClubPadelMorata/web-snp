@@ -55,7 +55,25 @@
             </button>
 
             <button class="nav-btn" data-section="jornadas">
-                📅
+                <span>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-calendar-clock">
+                    <path d="M16 14v2.2l1.6 1"/>
+                    <path d="M16 2v3"/>
+                    <path d="M21 7.338V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2.338"/>
+                    <path d="M3 9h5.859"/>
+                    <path d="M8 2v3"/>
+                    <circle cx="16" cy="16" r="6"/>
+                </svg>
+            </span>
                 <span>Jornadas</span>
             </button>
 
@@ -154,14 +172,26 @@
             <section id="jornadas" class="section">
 
                 <div class="section-header">
-                    <div>
-                        <h2>Jornadas</h2>
-                        <p>Calendario de la temporada</p>
-                    </div>
-
-                    <button class="primary-btn">
-                        + Nueva jornada
-                    </button>
+                    
+                    <button id="add-match-btn" class="primary-btn" title="Nueva jornada">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-calendar-plus">
+                        <path d="M16 18h6"/>
+                        <path d="M16 2v3"/>
+                        <path d="M19 15v6"/>
+                        <path d="M21 11.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8.3"/>
+                        <path d="M3 9h18"/>
+                        <path d="M8 2v3"/>
+                    </svg>
+                </button>
                 </div>
 
                 <div id="matches-list">
@@ -250,6 +280,174 @@
 
             <button type="submit" class="primary-btn modal-save">
                 Guardar jugadora
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<!-- MODAL NUEVA JORNADA -->
+
+<div id="match-modal" class="modal">
+
+    <div class="modal-content">
+
+        <button id="close-match-modal" class="close-modal">
+            ✕
+        </button>
+
+        <h2 id="match-modal-title">
+            Nueva jornada
+        </h2>
+
+        <form id="match-form">
+
+            <div class="form-group">
+
+                <label for="match-number">
+                    Jornada
+                </label>
+
+                <input
+                    type="number"
+                    id="match-number"
+                    min="1"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="match-date">
+                    Fecha
+                </label>
+
+                <input
+                    type="date"
+                    id="match-date"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="match-time">
+                    Hora
+                </label>
+
+                <input
+                    type="time"
+                    id="match-time"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="match-rival">
+                    Rival
+                </label>
+
+                <input
+                    type="text"
+                    id="match-rival"
+                    placeholder="Nombre del equipo rival"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+    <label>¿Dónde se juega?</label>
+
+    <div class="location-options">
+
+        <label class="location-option">
+
+            <input type="radio" name="location" value="casa" checked>
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="lucide lucide-house">
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+                <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+
+            <span>En casa</span>
+
+        </label>
+
+
+        <label class="location-option">
+
+            <input type="radio" name="location" value="fuera">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="lucide lucide-plane">
+                <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+            </svg>
+
+            <span>Fuera</span>
+
+        </label>
+
+    </div>
+</div>
+
+
+
+            <div class="form-group">
+
+                <label for="match-result">
+                    Resultado
+                </label>
+
+                <select id="match-result">
+
+                    <option value="pendiente">
+                        Pendiente
+                    </option>
+
+                    <option value="ganado">
+                        Ganado
+                    </option>
+
+                    <option value="perdido">
+                        Perdido
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-btn modal-save"
+            >
+                Guardar jornada
             </button>
 
         </form>
